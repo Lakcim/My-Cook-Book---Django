@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %} {% load crispy_forms_tags %} 
+{% if user.is_authenticated %}
+<h3>Add Recipe:</h3>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <ul>
+          {{ form.as_ul }}
+        </ul>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {% else %}
+  <p class="text-center">
+    Please <a href="/login">login</a> to acces this feature.
+  </p>
+</div>
+{% endif %}
+{% endblock %}
